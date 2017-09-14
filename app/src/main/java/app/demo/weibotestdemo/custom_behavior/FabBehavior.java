@@ -1,6 +1,7 @@
 package app.demo.weibotestdemo.custom_behavior;
 
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -104,28 +105,13 @@ public class FabBehavior extends CoordinatorLayout.Behavior<FloatingActionButton
         }
 
         if (mAnimatorSet != null) {
-            mAnimatorSet.addListener(new Animator.AnimatorListener() {
+            mAnimatorSet.addListener(new AnimatorListenerAdapter() {
                 @Override
-                public void onAnimationStart(Animator animator) {
-
-                }
-
-                @Override
-                public void onAnimationEnd(Animator animator) {
-                    mAnimatorSet = null;
+                public void onAnimationEnd(Animator animation) {
                     if (isUp) {
                         fab.setVisibility(View.INVISIBLE);
                     }
-                }
-
-                @Override
-                public void onAnimationCancel(Animator animator) {
-
-                }
-
-                @Override
-                public void onAnimationRepeat(Animator animator) {
-
+                    mAnimatorSet = null;
                 }
             });
         }

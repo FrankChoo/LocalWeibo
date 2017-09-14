@@ -20,6 +20,7 @@ public class CircleImageViewBehavior extends CoordinatorLayout.Behavior<CircleIm
     private int mStartWidth; // CircleImageView原始宽度
 
     private float mDependencyStartPosition; // 依赖View的起始位置
+    private float mPercent = 0.4f;
 
     private final Context mContext;
 
@@ -46,7 +47,7 @@ public class CircleImageViewBehavior extends CoordinatorLayout.Behavior<CircleIm
      */
     @Override
     public boolean onDependentViewChanged(CoordinatorLayout parent, final CircleImageView child, View dependency) {
-        getInitArgs(child, dependency);
+        initVariables(child, dependency);
 
         // 最大滑动距离: 起始位置-状态栏高度
         final int maxScrollDistance = (int) (mDependencyStartPosition);
@@ -54,7 +55,7 @@ public class CircleImageViewBehavior extends CoordinatorLayout.Behavior<CircleIm
         // 滑动的百分比
         float expandedPercentageFactor = dependency.getY() / maxScrollDistance;
 
-        if(Math.abs(expandedPercentageFactor) > 0.3) {
+        if(Math.abs(expandedPercentageFactor) > mPercent) {
             child.setVisibility(View.INVISIBLE);
         } else {
             child.setVisibility(View.VISIBLE);
@@ -68,14 +69,14 @@ public class CircleImageViewBehavior extends CoordinatorLayout.Behavior<CircleIm
         child.setX(nowXStation);
 
         CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) child.getLayoutParams();
-        lp.width = (int) (mStartHeight * (1 - Math.abs(expandedPercentageFactor)/0.3));
-        lp.height = (int) (mStartWidth * (1 - Math.abs(expandedPercentageFactor)/0.3));
+        lp.width = (int) (mStartHeight * (1 - Math.abs(expandedPercentageFactor)/mPercent));
+        lp.height = (int) (mStartWidth * (1 - Math.abs(expandedPercentageFactor)/mPercent));
         child.setLayoutParams(lp);
 
         return true;
     }
 
-    private void getInitArgs(CircleImageView child, View dependency) {
+    private void initVariables(CircleImageView child, View dependency) {
 
         // CircleImageView控件中心Y坐标
         if (mStartYPosition == 0)

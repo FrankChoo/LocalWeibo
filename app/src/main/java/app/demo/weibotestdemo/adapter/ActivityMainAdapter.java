@@ -198,7 +198,7 @@ public class ActivityMainAdapter extends RecyclerView.Adapter {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    DynamicInfoActivity.startActivity(MyApp.getContext(), mDynamicList.get(getAdapterPosition()-1), false);
+                    DynamicInfoActivity.start(MyApp.getContext(), mDynamicList.get(getAdapterPosition()-1), false);
                 }
             });
             setClickListener();
@@ -253,7 +253,7 @@ public class ActivityMainAdapter extends RecyclerView.Adapter {
                     break;
                 }
                 case R.id.forward_layout: {
-                    DynamicInfoActivity.startActivity(MyApp.getContext(), mDynamicList.get(getAdapterPosition()-1).getBaseForwardModel(), false);
+                    DynamicInfoActivity.start(MyApp.getContext(), mDynamicList.get(getAdapterPosition()-1).getBaseForwardModel(), false);
                     break;
                 }
                 case R.id.like_click_region: {
@@ -274,7 +274,7 @@ public class ActivityMainAdapter extends RecyclerView.Adapter {
                     break;
                 }
                 case R.id.comment_click_region: {
-                    DynamicInfoActivity.startActivity(MyApp.getContext(), mDynamicList.get(getAdapterPosition()-1), true);
+                    DynamicInfoActivity.start(MyApp.getContext(), mDynamicList.get(getAdapterPosition()-1), true);
                     break;
                 }
                 case R.id.forward_click_region: {
@@ -282,7 +282,7 @@ public class ActivityMainAdapter extends RecyclerView.Adapter {
                     break;
                 }
                 case R.id.send_comment: {
-                    DynamicInfoActivity.startActivity(MyApp.getContext(), mDynamicList.get(getAdapterPosition()-1), true);
+                    DynamicInfoActivity.start(MyApp.getContext(), mDynamicList.get(getAdapterPosition()-1), true);
                     break;
                 }
                 default:

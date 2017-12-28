@@ -26,7 +26,7 @@ import java.util.List;
 import app.demo.weibotestdemo.R;
 import app.demo.weibotestdemo.app_manager.BaseActivity;
 import app.demo.weibotestdemo.app_manager.MyApp;
-import app.demo.weibotestdemo.custom_view.DragViewPager;
+import app.demo.weibotestdemo.custom_view.DragDismissViewPager;
 import app.demo.weibotestdemo.utils.AppBarsUtil;
 import app.demo.weibotestdemo.utils.BitmapUtils;
 import app.demo.weibotestdemo.utils.DialogUtil;
@@ -41,7 +41,7 @@ import cn.bluemobi.dylan.photoview.library.PhotoViewAttacher;
 public class ShowImageActivity extends BaseActivity {
 
     /**UI控件*/
-    @MyApp.ViewResId(R.id.view_pager) private DragViewPager mViewPager;
+    @MyApp.ViewResId(R.id.view_pager) private DragDismissViewPager mViewPager;
     @MyApp.ViewResId(R.id.image_position) private TextView mPagerPosition;
     @MyApp.ViewResId(R.id.progress_bar) private ProgressBar mProgressBar;
 
@@ -61,6 +61,7 @@ public class ShowImageActivity extends BaseActivity {
         Intent intent = new Intent(context, ShowImageActivity.class);
         intent.putExtra("position", position);
         intent.putStringArrayListExtra("image_uri_list", (ArrayList<String>) imageUriList);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 
@@ -92,21 +93,10 @@ public class ShowImageActivity extends BaseActivity {
 
         mPagerPosition.setText(getPagerPositionContent(mPosition));
 
-        mViewPager = (DragViewPager)findViewById(R.id.view_pager);
+        mViewPager = (DragDismissViewPager)findViewById(R.id.view_pager);
         mAdapter = new ViewPagerAdapter(mList);
         mViewPager.setAdapter(mAdapter);
         mViewPager.setCurrentItem(mPosition);
-        mViewPager.setPictureDragListener(new DragViewPager.PictureDragListener() {
-            @Override
-            public void onPictureClick() {
-                finish();
-            }
-
-            @Override
-            public void onPictureRelease(View view) {
-                finish();
-            }
-        });
 
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

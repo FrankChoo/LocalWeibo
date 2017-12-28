@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
-    <app.demo.weibotestdemo.custom_view.DragViewPager
+    <app.demo.weibotestdemo.custom_view.DragDismissViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

@@ -78,13 +78,14 @@ public class DynamicInfoActivity extends BaseActivity implements DynamicInfoPres
     /**
      * 启动该Activity
      */
-    public static void startActivity(Context context, DynamicModel model, boolean isComment) {
+    public static void start(Context context, DynamicModel model, boolean isComment) {
         Intent intent = new Intent(context, DynamicInfoActivity.class);
         Bundle bundle = new Bundle();
         bundle.putParcelable("model", model);
         intent.putExtras(bundle);
         intent.putExtras(bundle);
         intent.putExtra("comment", isComment);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 
@@ -210,7 +211,7 @@ public class DynamicInfoActivity extends BaseActivity implements DynamicInfoPres
     public void onClick(View view) {
         switch(view.getId()) {
             case R.id.forward_layout: {
-                startActivity(DynamicInfoActivity.this, mPresenter.getDynamic().getBaseForwardModel(), false);
+                start(DynamicInfoActivity.this, mPresenter.getDynamic().getBaseForwardModel(), false);
                 break;
             }
             case R.id.like_click_region: {

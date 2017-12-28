@@ -90,7 +90,7 @@ public class LoadingView extends LinearLayout {
      * 执行下落动画
      */
     private void startFallAnimator() {
-        if (isStop) return;
+        if (getVisibility() != View.VISIBLE) return;
         Log.e("TAG", "startFallAnimator");
         mFallAnimSet = new AnimatorSet();
         mFallAnimSet.playTogether(
@@ -116,7 +116,7 @@ public class LoadingView extends LinearLayout {
      * 执行上抛动画
      */
     private void startThrowAnimator() {
-        if (isStop) return;
+        if (getVisibility() != View.VISIBLE) return;
         Log.e("TAG", "startThrowAnimator");
         mThrowAnimSet = new AnimatorSet();
         mThrowAnimSet.playTogether(
@@ -166,11 +166,7 @@ public class LoadingView extends LinearLayout {
     @Override
     protected void onVisibilityChanged(View changedView, int visibility) {
         Log.e("TAG", "startFallAnimator");
-        if (visibility == GONE || visibility == INVISIBLE) {
-            isStop = true;
-            clearAllAnimator();
-        } else {
-            isStop = false;
+        if (visibility == VISIBLE) {
             startFallAnimator();
         }
         super.onVisibilityChanged(changedView, visibility);

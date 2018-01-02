@@ -22,7 +22,7 @@ public class MainPresenter {
         mModel.loadDyanmic(new MainModel.DataListener() {
             @Override
             public void onComplete(LinkedList<DynamicModel> data) {
-                mView.loadDyanmic(data);
+                mView.loadDynamic(data);
             }
         });
     }
@@ -32,7 +32,7 @@ public class MainPresenter {
             @Override
             public void onComplete(LinkedList<DynamicModel> data) {
                 if(data != null) {
-                    mView.loadDyanmic(data);
+                    mView.loadDynamic(data);
                 }
             }
         });
@@ -53,7 +53,7 @@ public class MainPresenter {
     }
 
     public interface MainActivityViewInterface {
-        void loadDyanmic(LinkedList<DynamicModel> data);
+        void loadDynamic(LinkedList<DynamicModel> data);
         void showRefresh();
         void hideRefresh();
     }

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +25,7 @@ import java.util.List;
 import app.demo.weibotestdemo.R;
 import app.demo.weibotestdemo.app_manager.BaseActivity;
 import app.demo.weibotestdemo.app_manager.MyApp;
-import app.demo.weibotestdemo.custom_view.DragDismissViewPager;
+import app.demo.weibotestdemo.custom_view.DraggableViewPager;
 import app.demo.weibotestdemo.utils.AppBarsUtil;
 import app.demo.weibotestdemo.utils.BitmapUtils;
 import app.demo.weibotestdemo.utils.DialogUtil;
@@ -41,7 +40,7 @@ import cn.bluemobi.dylan.photoview.library.PhotoViewAttacher;
 public class ShowImageActivity extends BaseActivity {
 
     /**UI控件*/
-    @MyApp.ViewResId(R.id.view_pager) private DragDismissViewPager mViewPager;
+    @MyApp.ViewResId(R.id.view_pager) private DraggableViewPager mViewPager;
     @MyApp.ViewResId(R.id.image_position) private TextView mPagerPosition;
     @MyApp.ViewResId(R.id.progress_bar) private ProgressBar mProgressBar;
 
@@ -93,22 +92,16 @@ public class ShowImageActivity extends BaseActivity {
 
         mPagerPosition.setText(getPagerPositionContent(mPosition));
 
-        mViewPager = (DragDismissViewPager)findViewById(R.id.view_pager);
+        mViewPager = (DraggableViewPager)findViewById(R.id.view_pager);
         mAdapter = new ViewPagerAdapter(mList);
         mViewPager.setAdapter(mAdapter);
         mViewPager.setCurrentItem(mPosition);
 
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mViewPager.setOnPagerChangedListener(new DraggableViewPager.OnPagerChangedListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
+            public View onPagerChanged(int position) {
                 mPagerPosition.setText(getPagerPositionContent(position));
                 final PhotoView itemView = mList.get(position);
-                mViewPager.setCurrentShowView(itemView);
                 //若itemView中的图片没有内容, 则加载
                 if (itemView.getDrawable() == null) {
                     mProgressBar.setVisibility(View.VISIBLE);
@@ -120,11 +113,7 @@ public class ShowImageActivity extends BaseActivity {
                         }
                     });
                 }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
+                return itemView;
             }
         });
     }
@@ -234,7 +223,5 @@ public class ShowImageActivity extends BaseActivity {
             container.removeView(view);
         }
     }
-
-
 }
 

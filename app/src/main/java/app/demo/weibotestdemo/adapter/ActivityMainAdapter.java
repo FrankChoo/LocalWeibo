@@ -2,6 +2,7 @@ package app.demo.weibotestdemo.adapter;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.support.design.widget.CheckableImageButton;
 import android.support.v7.widget.RecyclerView;
 import android.text.method.LinkMovementMethod;
@@ -22,9 +23,9 @@ import java.util.List;
 
 import app.demo.weibotestdemo.R;
 import app.demo.weibotestdemo.activity.ShowImageActivity;
-import app.demo.weibotestdemo.activity.dynamic_info.DynamicInfoActivity;
+import app.demo.weibotestdemo.activity.dynamicInfo.DynamicInfoActivity;
 import app.demo.weibotestdemo.activity.main.MainPresenter;
-import app.demo.weibotestdemo.activity.publish_dynamic.PublishDynamicActivity;
+import app.demo.weibotestdemo.activity.publishDynamic.PublishDynamicActivity;
 import app.demo.weibotestdemo.app_manager.MyApp;
 import app.demo.weibotestdemo.custom_view.NineGridImage;
 import app.demo.weibotestdemo.model.DynamicModel;
@@ -105,6 +106,7 @@ public class ActivityMainAdapter extends RecyclerView.Adapter {
         vh.mLoadingFinishLayout.setVisibility(mPresenter.isCanLoading() ? View.GONE : View.VISIBLE);
     }
 
+    @SuppressLint("RestrictedApi")
     private void bindDynamicViewHolder(DynamicViewHolder vh, int position) {
         //由于该Adapter设置了Header与Footer, 所以集合中的数据为Adapter中对应ViewPosition-1
         DynamicModel model = mDynamicList.get(position - 1);

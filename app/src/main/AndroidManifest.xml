@@ -36,11 +36,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.publish_dynamic.PublishDynamicActivity"
+            android:name=".activity.publishDynamic.PublishDynamicActivity"
             android:windowSoftInputMode="stateAlwaysVisible" />
-        <activity android:name=".activity.dynamic_info.DynamicInfoActivity" />
-        <activity android:name=".activity.ShowImageActivity" />
-        <activity android:name=".activity.picture_picker.PicturePickerActivity"/>
+        <activity android:name=".activity.dynamicInfo.DynamicInfoActivity" />
+        <activity android:name=".activity.ShowImageActivity"
+            android:theme="@style/TransparentTheme"/>
+        <activity android:name=".activity.picturePicker.PicturePickerActivity"/>
     </application>
 
 </manifest>

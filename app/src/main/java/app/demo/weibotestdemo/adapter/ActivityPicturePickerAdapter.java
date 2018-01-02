@@ -16,8 +16,8 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import app.demo.weibotestdemo.R;
-import app.demo.weibotestdemo.activity.picture_picker.PicturePickerActivity;
-import app.demo.weibotestdemo.activity.picture_picker.PicturePickerPresenter;
+import app.demo.weibotestdemo.activity.picturePicker.PicturePickerActivity;
+import app.demo.weibotestdemo.activity.picturePicker.PicturePickerPresenter;
 import app.demo.weibotestdemo.app_manager.MyApp;
 
 /**

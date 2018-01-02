@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import app.demo.weibotestdemo.R;
-import app.demo.weibotestdemo.activity.picture_picker.PicturePickerPresenter;
+import app.demo.weibotestdemo.activity.picturePicker.PicturePickerPresenter;
 import app.demo.weibotestdemo.app_manager.MyApp;
 import app.demo.weibotestdemo.model.PictureFolderModel;
 import app.demo.weibotestdemo.utils.DialogUtil;

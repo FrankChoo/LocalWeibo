@@ -19,7 +19,7 @@ import com.bumptech.glide.Glide;
 import java.util.LinkedList;
 
 import app.demo.weibotestdemo.R;
-import app.demo.weibotestdemo.activity.publish_dynamic.PublishDynamicActivity;
+import app.demo.weibotestdemo.activity.publishDynamic.PublishDynamicActivity;
 import app.demo.weibotestdemo.adapter.ActivityMainAdapter;
 import app.demo.weibotestdemo.app_manager.BaseActivity;
 import app.demo.weibotestdemo.app_manager.MyApp;
@@ -157,7 +157,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.MainActi
     }
 
     @Override
-    public void loadDyanmic(LinkedList<DynamicModel> data) {
+    public void loadDynamic(LinkedList<DynamicModel> data) {
         //Adapter中设置了Header和Footer, 所以集合中元素的position在列表中对应的位置应为position + 1
         int insertStart = mList.size() + 1;
         mList.addAll(data);

@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import app.demo.weibotestdemo.R;
-import app.demo.weibotestdemo.activity.publish_dynamic.PublishDynamicActivity;
+import app.demo.weibotestdemo.activity.publishDynamic.PublishDynamicActivity;
 import app.demo.weibotestdemo.app_manager.MyApp;
 
 /**

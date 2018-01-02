@@ -47,7 +47,6 @@ public class LoadingView extends LinearLayout {
 
     private void initViews() {
         removeAllViews();
-
         /*小球*/
         mShapeView = new ShapeView(mContext);
         mShapeView.setLayoutParams(new LayoutParams(dip2px(25), dip2px(25)));
@@ -80,7 +79,7 @@ public class LoadingView extends LinearLayout {
             @Override
             public void run() {
                 if (getVisibility() == VISIBLE) {
-                    startFallAnimator();
+                    // startFallAnimator();
                 }
             }
         });
@@ -167,7 +166,9 @@ public class LoadingView extends LinearLayout {
     protected void onVisibilityChanged(View changedView, int visibility) {
         Log.e("TAG", "startFallAnimator");
         if (visibility == VISIBLE) {
-            startFallAnimator();
+            // startFallAnimator();
+        } else {
+            isStop = true;
         }
         super.onVisibilityChanged(changedView, visibility);
     }
